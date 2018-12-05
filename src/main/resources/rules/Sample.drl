@@ -1,5 +1,39 @@
 package com.sample
- 
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import com.sample.Frame;
 
  
+declare Question
+	question : String @key
+	// answers : java.util.List @key
+	answer : String
+end
 
+declare enum QuestionVal
+	THEME("Doest the theme matter to you", ["YES", "NO"]);
+	
+	
+	foo : String
+	bar : java.util.List
+end 
+
+function void askQuestion(String question, java.util.List answers) {
+	Frame.updateFrame(question, answers);
+	System.out.println(Frame.answer);
+	
+}
+
+rule foo
+when
+then
+	askQuestion(QuestionVal.THEME.getFoo(), QuestionVal.THEME.getBar());
+end
+
+rule bar
+when 
+	Q : Question(answer : answer)
+then
+	System.out.println(answer);
+end
