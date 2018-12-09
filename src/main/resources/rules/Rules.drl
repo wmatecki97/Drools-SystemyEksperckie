@@ -9,7 +9,7 @@ declare Answer
 	answer : String
 end
 
-rule foo
+rule init
 when
 then
 	System.out.println(QuestionVal.THEME.getQuestion());
