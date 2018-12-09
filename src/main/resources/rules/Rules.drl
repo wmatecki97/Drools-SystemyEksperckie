@@ -1,0 +1,16 @@
+package com.sample
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import com.sample.Frame;
+
+declare Answer
+	question : String
+	answer : String
+end
+
+rule init
+when
+then
+	System.out.println(QuestionVal.THEME.getQuestion());
+end
