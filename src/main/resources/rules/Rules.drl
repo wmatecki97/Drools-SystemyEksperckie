@@ -15,10 +15,406 @@ then
 	insert(new Answer(QuestionVal.THEME.getQuestion(), ans));
 end
 
-rule test
+rule FAV_THEME
 when
-	a: Answer(a.answer == "YES")
+	a: Answer(a.question == QuestionVal.THEME.getQuestion(), a.answer == "Yes")
 then
-	String ans = QuestionWindow.updateFrame("Yes", QuestionVal.THEME.getAnswers());	
+	String ans = QuestionWindow.updateFrame(QuestionVal.FAV_THEME.getQuestion(), QuestionVal.FAV_THEME.getAnswers());
+	insert(new Answer(QuestionVal.FAV_THEME.getQuestion(), ans));	
 end
 
+rule CITY_BUILDING
+when
+	a: Answer(a.question == QuestionVal.FAV_THEME.getQuestion(), a.answer == "City Building")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.CITY_BUILDING.getQuestion(), QuestionVal.CITY_BUILDING.getAnswers());
+	insert(new Answer(QuestionVal.CITY_BUILDING.getQuestion(), ans));	
+end
+
+rule TILE_PLACEMENT_YES
+when
+	a: Answer(a.question == QuestionVal.CITY_BUILDING.getQuestion(), a.answer == "Yes")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.ELECTIONS.getQuestion(), QuestionVal.ELECTIONS.getAnswers());
+	insert(new Answer(QuestionVal.ELECTIONS.getQuestion(), ans));	
+	
+end
+
+rule ELECTIONS_YES
+when
+	a: Answer(a.question == QuestionVal.ELECTIONS.getQuestion(), a.answer == "It's the democratic way")
+then
+	QuestionWindow.showResults("Urban Sprawl");
+end
+
+rule ELECTIONS_NO
+when
+	a: Answer(a.question == QuestionVal.ELECTIONS.getQuestion(), a.answer == "Nope, I just want to build")
+then
+	QuestionWindow.showResults("Suburbia");
+end
+
+rule TILE_PLACEMENT_NO
+when
+	a: Answer(a.question == QuestionVal.CITY_BUILDING.getQuestion(), a.answer == "No")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.SCRATCH_RENEWAL.getQuestion(), QuestionVal.SCRATCH_RENEWAL.getAnswers());
+	insert(new Answer(QuestionVal.SCRATCH_RENEWAL.getQuestion(), ans));	
+end
+
+rule FROM_SCRATCH
+when
+	a: Answer(a.question == QuestionVal.SCRATCH_RENEWAL.getQuestion(), a.answer == "Let's build it up!")
+then
+	QuestionWindow.showResults("Urbanization");
+end
+
+rule URBAN_RENEWAL
+when
+	a: Answer(a.question == QuestionVal.SCRATCH_RENEWAL.getQuestion(), a.answer == "Let's clean the streets!")
+then
+	QuestionWindow.showResults("Urbania");
+end
+
+rule FANTASY
+when
+	a: Answer(a.question == QuestionVal.FAV_THEME.getQuestion(), a.answer == "Fantasy")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.DUNGEON_CRAWLING.getQuestion(), QuestionVal.DUNGEON_CRAWLING.getAnswers());
+	insert(new Answer(QuestionVal.DUNGEON_CRAWLING.getQuestion(), ans));	
+end
+
+rule DUNGEON_CRAWLING_YES
+when
+	a: Answer(a.question == QuestionVal.DUNGEON_CRAWLING.getQuestion(), a.answer == "Yes")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.SERIOUS.getQuestion(), QuestionVal.SERIOUS.getAnswers());
+	insert(new Answer(QuestionVal.SERIOUS.getQuestion(), ans));	
+end
+
+rule SERIOUS_NO
+when
+	a: Answer(a.question == QuestionVal.SERIOUS.getQuestion(), a.answer == "No")
+then
+	QuestionWindow.showResults("Munchkin");
+end
+
+rule SERIOUS_YES
+when
+	a: Answer(a.question == QuestionVal.SERIOUS.getQuestion(), a.answer == "Yes")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.PLAYERS_NUMBER.getQuestion(), QuestionVal.PLAYERS_NUMBER.getAnswers());
+	insert(new Answer(QuestionVal.PLAYERS_NUMBER.getQuestion(), ans));	
+end
+
+rule SERIOUS_TWO_PLAYERS
+when
+	a: Answer(a.question == QuestionVal.PLAYERS_NUMBER.getQuestion(), a.answer == "Just the two of us")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.CRUSH_MANEUVER.getQuestion(), QuestionVal.CRUSH_MANEUVER.getAnswers());
+	insert(new Answer(QuestionVal.CRUSH_MANEUVER.getQuestion(), ans));	
+end
+
+rule FIGHT
+when
+	a: Answer(a.question == QuestionVal.CRUSH_MANEUVER.getQuestion(), a.answer == "Fight")
+then
+	QuestionWindow.showResults("Claustrophobia");
+end
+
+rule MANEUVER
+when
+	a: Answer(a.question == QuestionVal.CRUSH_MANEUVER.getQuestion(), a.answer == "Maneuver")
+then
+	QuestionWindow.showResults("Dungeon Twister 2: Prison");
+end
+
+rule SERIOUS_MORE_PLAYERS
+when
+	a: Answer(a.question == QuestionVal.PLAYERS_NUMBER.getQuestion(), a.answer == "More then two")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.COOPERATIVE_COMPETITIVE_2OPTIONS.getQuestion(), QuestionVal.COOPERATIVE_COMPETITIVE_2OPTIONS.getAnswers());
+	insert(new Answer(QuestionVal.COOPERATIVE_COMPETITIVE_2OPTIONS.getQuestion(), ans));	
+end
+
+rule MORE_PLAYERS_COOPERATIVE
+when
+	a: Answer(a.question == QuestionVal.COOPERATIVE_COMPETITIVE_2OPTIONS.getQuestion(), a.answer == "Cooperative")
+	b: Answer(b.question == QuestionVal.PLAYERS_NUMBER.getQuestion(), b.answer == "More then two")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.WITH_KIDS.getQuestion(), QuestionVal.WITH_KIDS.getAnswers());
+	insert(new Answer(QuestionVal.WITH_KIDS.getQuestion(), ans));	
+end
+
+rule WITH_KIDS
+when
+	a: Answer(a.question == QuestionVal.WITH_KIDS.getQuestion(), a.answer == "Yes")
+then
+	QuestionWindow.showResults("Mice&Mystics");
+end
+
+rule WITHOUT_KIDS
+when
+	a: Answer(a.question == QuestionVal.WITH_KIDS.getQuestion(), a.answer == "No")
+then
+	QuestionWindow.showResults("Dunbeons and Dragons: Legend of Drizzt");
+end
+
+rule MORE_PLAYERS_COMPETITIVE
+when
+	a: Answer(a.question == QuestionVal.COOPERATIVE_COMPETITIVE_2OPTIONS.getQuestion(), a.answer == "Competitive")
+	b: Answer(b.question == QuestionVal.PLAYERS_NUMBER.getQuestion(), b.answer == "More then two")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.CAMPAIGN.getQuestion(), QuestionVal.CAMPAIGN.getAnswers());
+	insert(new Answer(QuestionVal.CAMPAIGN.getQuestion(), ans));	
+end
+
+rule CAMPAIGN_YES
+when
+	a: Answer(a.question == QuestionVal.CAMPAIGN.getQuestion(), a.answer == "Yes")
+then
+	QuestionWindow.showResults("Descent: Journey in the Dark 2nd Edition");
+end
+	
+rule CAMPAIGN_NO
+when
+	a: Answer(a.question == QuestionVal.CAMPAIGN.getQuestion(), a.answer == "Just one game")
+then
+	QuestionWindow.showResults("Dungeon Run");
+end
+
+rule DUNGEON_CRAWLING_NO
+when
+	a: Answer(a.question == QuestionVal.DUNGEON_CRAWLING.getQuestion(), a.answer == "No")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.MANAGING_DUNGEON.getQuestion(), QuestionVal.MANAGING_DUNGEON.getAnswers());
+	insert(new Answer(QuestionVal.MANAGING_DUNGEON.getQuestion(), ans));	
+end
+
+rule MANAGING_DUNGEON_YES
+when
+	a: Answer(a.question == QuestionVal.MANAGING_DUNGEON.getQuestion(), a.answer == "Yes")
+then
+	QuestionWindow.showResults("Dungeon Lords");
+end
+
+rule MANAGING_DUNGEON_NO
+when
+	a: Answer(a.question == QuestionVal.MANAGING_DUNGEON.getQuestion(), a.answer == "No")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.QUESTS.getQuestion(), QuestionVal.QUESTS.getAnswers());
+	insert(new Answer(QuestionVal.QUESTS.getQuestion(), ans));	
+end
+
+rule QUESTS_YES
+when
+	a: Answer(a.question == QuestionVal.QUESTS.getQuestion(), a.answer == "Yes")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.COOPERATIVE_COMPETITIVE_3OPTIONS.getQuestion(), QuestionVal.COOPERATIVE_COMPETITIVE_3OPTIONS.getAnswers());
+	insert(new Answer(QuestionVal.COOPERATIVE_COMPETITIVE_3OPTIONS.getQuestion(), ans));	
+end
+
+rule COOP_BACKSTAB
+when
+	a: Answer(a.question == QuestionVal.COOPERATIVE_COMPETITIVE_3OPTIONS.getQuestion(), a.answer == "Cooperative - if I can backstab")
+	b: Answer(b.question == QuestionVal.QUESTS.getQuestion(), b.answer == "Yes")
+then
+	QuestionWindow.showResults("Shadows Over Camelot");
+end
+
+rule COOP_NO_BACKSTAB
+when
+	a: Answer(a.question == QuestionVal.COOPERATIVE_COMPETITIVE_3OPTIONS.getQuestion(), a.answer == "Cooperative")
+	b: Answer(b.question == QuestionVal.QUESTS.getQuestion(), b.answer == "Yes")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.BOARD_CARD.getQuestion(), QuestionVal.BOARD_CARD.getAnswers());
+	insert(new Answer(QuestionVal.BOARD_CARD.getQuestion(), ans));	
+end
+
+rule COOP_CARDS
+when
+	a: Answer(a.question == QuestionVal.BOARD_CARD.getQuestion(), a.answer == "Cards")
+then
+	QuestionWindow.showResults("Lord of the Rings Living Card Game");
+end
+
+rule COOP_BOARDS
+when
+	a: Answer(a.question == QuestionVal.BOARD_CARD.getQuestion(), a.answer == "Boards")
+then
+	QuestionWindow.showResults("Defenders of the Realm");
+end
+
+rule QUESTS_COMPETITIVE 
+when
+	a: Answer(a.question == QuestionVal.COOPERATIVE_COMPETITIVE_3OPTIONS.getQuestion(), a.answer == "Competitive")
+	b: Answer(b.question == QuestionVal.QUESTS.getQuestion(), b.answer == "Yes")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.RANDOM_EVENTS.getQuestion(), QuestionVal.RANDOM_EVENTS.getAnswers());
+	insert(new Answer(QuestionVal.RANDOM_EVENTS.getQuestion(), ans));	
+end
+
+rule STRATEGY
+when
+	a: Answer(a.question == QuestionVal.RANDOM_EVENTS.getQuestion(), a.answer == "Yes, Strategy matters")
+then
+	QuestionWindow.showResults("Mage Knight");
+end
+
+rule STORYTELLING
+when
+	a: Answer(a.question == QuestionVal.RANDOM_EVENTS.getQuestion(), a.answer == "No, It's the experience that counts")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.STORYTELLING.getQuestion(), QuestionVal.STORYTELLING.getAnswers());
+	insert(new Answer(QuestionVal.STORYTELLING.getQuestion(), ans));	
+end
+
+rule STORYTELLING_IMPORTANT
+when
+	a: Answer(a.question == QuestionVal.STORYTELLING.getQuestion(), a.answer == "Yes")
+then
+	QuestionWindow.showResults("Tales of the Arabian Night");
+end
+
+rule STORYTELLING_COMBAT
+when
+	a: Answer(a.question == QuestionVal.STORYTELLING.getQuestion(), a.answer == "Not as much as combat!")
+then
+	QuestionWindow.showResults("Talisman");
+end
+
+rule QUESTS_NO
+when
+	a: Answer(a.question == QuestionVal.QUESTS.getQuestion(), a.answer == "No")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.DECKBUILDERS.getQuestion(), QuestionVal.DECKBUILDERS.getAnswers());
+	insert(new Answer(QuestionVal.DECKBUILDERS.getQuestion(), ans));	
+end
+
+rule DECKBUILDERS_YES
+when
+	a: Answer(a.question == QuestionVal.DECKBUILDERS.getQuestion(), a.answer == "Yes")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.COMPETITIVE_DECKS.getQuestion(), QuestionVal.COMPETITIVE_DECKS.getAnswers());
+	insert(new Answer(QuestionVal.COMPETITIVE_DECKS.getQuestion(), ans));	
+end
+
+rule DECKBUILDERS_COOP
+when
+	a: Answer(a.question == QuestionVal.COMPETITIVE_DECKS.getQuestion(), a.answer == "Cooperative")
+then
+	QuestionWindow.showResults("Rune Age");
+end
+
+rule DECKBUILDERS_COMPETITIVE
+when
+	a: Answer(a.question == QuestionVal.COMPETITIVE_DECKS.getQuestion(), a.answer == "Competitive")
+then
+	QuestionWindow.showResults("Thunderstone: Advance");
+end
+
+rule DECKBUILDERS_NO
+when
+	a: Answer(a.question == QuestionVal.DECKBUILDERS.getQuestion(), a.answer == "No")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.LOTR_FAN.getQuestion(), QuestionVal.LOTR_FAN.getAnswers());
+	insert(new Answer(QuestionVal.LOTR_FAN.getQuestion(), ans));	
+end
+
+rule LOTR_FAN
+when
+	a: Answer(a.question == QuestionVal.LOTR_FAN.getQuestion(), a.answer == "Yes")
+then
+	QuestionWindow.showResults("War of the Ring");
+end
+
+rule CASTLE_DEFENSE
+when
+	a: Answer(a.question == QuestionVal.LOTR_FAN.getQuestion(), a.answer == "No")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.CASTLE_DEFENSE.getQuestion(), QuestionVal.CASTLE_DEFENSE.getAnswers());
+	insert(new Answer(QuestionVal.CASTLE_DEFENSE.getQuestion(), ans));	
+end
+
+rule CASTLE_DEFENSE_YES
+when
+	a: Answer(a.question == QuestionVal.CASTLE_DEFENSE.getQuestion(), a.answer == "Sounds fun")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.COOPERATIVE_COMPETITIVE_2OPTIONS.getQuestion(), QuestionVal.COOPERATIVE_COMPETITIVE_2OPTIONS.getAnswers());
+	insert(new Answer(QuestionVal.COOPERATIVE_COMPETITIVE_2OPTIONS.getQuestion(), ans));	
+end
+
+rule CASTLE_DEFENCE_COOP
+when
+	a: Answer(a.question == QuestionVal.COOPERATIVE_COMPETITIVE_2OPTIONS.getQuestion(), a.answer == "Cooperative")
+	b: Answer(b.question == QuestionVal.CASTLE_DEFENSE.getQuestion(), b.answer == "Sounds fun")
+then
+	QuestionWindow.showResults("Castle Panic");
+end
+
+rule CASTLE_DEFENCE_COMPETITIVE
+when
+	a: Answer(a.question == QuestionVal.COOPERATIVE_COMPETITIVE_2OPTIONS.getQuestion(), a.answer == "Competitive")
+	b: Answer(b.question == QuestionVal.CASTLE_DEFENSE.getQuestion(), b.answer == "Sounds fun")
+then
+	QuestionWindow.showResults("Dragon Rampage");
+end
+
+rule CASTLE_DEFENSE_NO
+when
+	a: Answer(a.question == QuestionVal.CASTLE_DEFENSE.getQuestion(), a.answer == "Not for me")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.CONQUEST_FANTASY.getQuestion(), QuestionVal.CONQUEST_FANTASY.getAnswers());
+	insert(new Answer(QuestionVal.CONQUEST_FANTASY.getQuestion(), ans));	
+end
+
+rule CONQUEST_FANTASY_YES
+when
+	a: Answer(a.question == QuestionVal.CONQUEST_FANTASY.getQuestion(), a.answer == "Yes")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.EPIC.getQuestion(), QuestionVal.EPIC.getAnswers());
+	insert(new Answer(QuestionVal.EPIC.getQuestion(), ans));	
+end
+
+rule EPIC_YES
+when
+	a: Answer(a.question == QuestionVal.EPIC.getQuestion(), a.answer == "Yes! It's gotta be big")
+then
+	QuestionWindow.showResults("RuneWars");
+end
+
+rule EPIC_NO
+when
+	a: Answer(a.question == QuestionVal.EPIC.getQuestion(), a.answer == "No, keep it quick")
+then
+	QuestionWindow.showResults("Small World");
+end
+
+rule CONQUEST_FANTASY_NO
+when
+	a: Answer(a.question == QuestionVal.CONQUEST_FANTASY.getQuestion(), a.answer == "No")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.EVERDAY_LIFE.getQuestion(), QuestionVal.EVERDAY_LIFE.getAnswers());
+	insert(new Answer(QuestionVal.EVERDAY_LIFE.getQuestion(), ans));	
+end
+
+rule EVERDAY_BUSINNES
+when
+	a: Answer(a.question == QuestionVal.EVERDAY_LIFE.getQuestion(), a.answer == "Running a businnes")
+then
+	QuestionWindow.showResults("Dungeon Petz");
+end
+
+rule EVERDAY_RELAXING
+when
+	a: Answer(a.question == QuestionVal.EVERDAY_LIFE.getQuestion(), a.answer == "Relaxing after work")
+then
+	QuestionWindow.showResults("Red Dragon Inn");
+end
+
+rule EVERDAY_ANNIHILATING
+when
+	a: Answer(a.question == QuestionVal.EVERDAY_LIFE.getQuestion(), a.answer == "Annihilating your business rivals")
+then
+	QuestionWindow.showResults("Mage Wars");
+end
