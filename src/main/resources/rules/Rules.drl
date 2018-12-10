@@ -2,7 +2,6 @@ package com.sample
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import com.sample.Frame;
 
 declare Answer
 	question : String
@@ -12,5 +11,14 @@ end
 rule init
 when
 then
-	System.out.println(QuestionVal.THEME.getQuestion());
+	String ans = QuestionWindow.updateFrame(QuestionVal.THEME.getQuestion(), QuestionVal.THEME.getAnswers());
+	insert(new Answer(QuestionVal.THEME.getQuestion(), ans));
 end
+
+rule test
+when
+	a: Answer(a.answer == "YES")
+then
+	String ans = QuestionWindow.updateFrame("Yes", QuestionVal.THEME.getAnswers());	
+end
+
