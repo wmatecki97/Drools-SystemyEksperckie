@@ -13,6 +13,10 @@ public class QuestionWindow {
                 "Wybierz odpowiedz",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options.toArray(new String[options.size()]), options.get(0));
 		
-		return options.get(0);
+		return options.get(index);
+	}
+	
+	public static void showResults(String info) {
+		JOptionPane.showMessageDialog(frame, "You should play: " + info);
 	}
 }
