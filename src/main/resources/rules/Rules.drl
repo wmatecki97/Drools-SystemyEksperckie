@@ -418,3 +418,251 @@ when
 then
 	QuestionWindow.showResults("Mage Wars");
 end
+
+rule Star_Wars
+when
+	a: Answer(a.question == QuestionVal.FAV_THEME.getQuestion(), a.answer == "Science Fiction")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.SW.getQuestion(), QuestionVal.SW.getAnswers());
+	insert(new Answer(QuestionVal.SW.getQuestion(), ans));
+end
+
+rule ALIEN_RACE1
+when
+	a: Answer(a.question == QuestionVal.ALIEN_RACE.getQuestion(), a.answer == "Maybe not")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.CARD_GAME.getQuestion(), QuestionVal.CARD_GAME.getAnswers());
+	insert(new Answer(QuestionVal.CARD_GAME.getQuestion(), ans));
+end
+rule ALIEN_RACE2
+when
+	a: Answer(a.question == QuestionVal.ALIEN_RACE.getQuestion(), a.answer == "That sounds fun")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.BATTLE.getQuestion(), QuestionVal.BATTLE.getAnswers());
+	insert(new Answer(QuestionVal.BATTLE.getQuestion(), ans));
+end
+rule BATTLESTAR2
+when
+	a: Answer(a.question == QuestionVal.BATTLESTAR.getQuestion(), a.answer == "No")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.EEEE.getQuestion(), QuestionVal.EEEE.getAnswers());
+	insert(new Answer(QuestionVal.EEEE.getQuestion(), ans));
+end
+rule CARD_GAME1
+when
+	a: Answer(a.question == QuestionVal.CARD_GAME.getQuestion(), a.answer == "Sure, that works")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.SPACE_DECKBUILDER.getQuestion(), QuestionVal.SPACE_DECKBUILDER.getAnswers());
+	insert(new Answer(QuestionVal.SPACE_DECKBUILDER.getQuestion(), ans));
+end
+rule CARD_GAME2
+when
+	a: Answer(a.question == QuestionVal.CARD_GAME.getQuestion(), a.answer == "I like my boards")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.NOT_ALIEN.getQuestion(), QuestionVal.NOT_ALIEN.getAnswers());
+	insert(new Answer(QuestionVal.NOT_ALIEN.getQuestion(), ans));
+end
+rule EEEE1
+when
+	a: Answer(a.question == QuestionVal.EEEE.getQuestion(), a.answer == "Of course!")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.HOW_EPIC.getQuestion(), QuestionVal.HOW_EPIC.getAnswers());
+	insert(new Answer(QuestionVal.HOW_EPIC.getQuestion(), ans));
+end
+rule EEEE2
+when
+	a: Answer(a.question == QuestionVal.EEEE.getQuestion(), a.answer == "That's not right!")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.ALIEN_RACE.getQuestion(), QuestionVal.ALIEN_RACE.getAnswers());
+	insert(new Answer(QuestionVal.ALIEN_RACE.getQuestion(), ans));
+end
+rule NOT_ALIEN3
+when
+	a: Answer(a.question == QuestionVal.NOT_ALIEN.getQuestion(), a.answer == "Space Crew on Mission")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.SPACE_CREW.getQuestion(), QuestionVal.SPACE_CREW.getAnswers());
+	insert(new Answer(QuestionVal.SPACE_CREW.getQuestion(), ans));
+end
+rule NOT_ALIEN4
+when
+	a: Answer(a.question == QuestionVal.NOT_ALIEN.getQuestion(), a.answer == "Merchant")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.MERCHANT.getQuestion(), QuestionVal.MERCHANT.getAnswers());
+	insert(new Answer(QuestionVal.MERCHANT.getQuestion(), ans));
+end
+rule SPACE_DECKBUILDER2
+when
+	a: Answer(a.question == QuestionVal.SPACE_DECKBUILDER.getQuestion(), a.answer == "No")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.LCG.getQuestion(), QuestionVal.LCG.getAnswers());
+	insert(new Answer(QuestionVal.LCG.getQuestion(), ans));
+end
+rule ST1
+when
+	a: Answer(a.question == QuestionVal.ST.getQuestion(), a.answer == "Yes")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.ST_FAN.getQuestion(), QuestionVal.ST_FAN.getAnswers());
+	insert(new Answer(QuestionVal.ST_FAN.getQuestion(), ans));
+end
+rule ST2
+when
+	a: Answer(a.question == QuestionVal.ST.getQuestion(), a.answer == "No")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.BATTLESTAR.getQuestion(), QuestionVal.BATTLESTAR.getAnswers());
+	insert(new Answer(QuestionVal.BATTLESTAR.getQuestion(), ans));
+end
+rule SW1
+when
+	a: Answer(a.question == QuestionVal.SW.getQuestion(), a.answer == "No")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.ST.getQuestion(), QuestionVal.ST.getAnswers());
+	insert(new Answer(QuestionVal.ST.getQuestion(), ans));
+end
+rule SW2
+when
+	a: Answer(a.question == QuestionVal.SW.getQuestion(), a.answer == "Yes")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.SW_FAN.getQuestion(), QuestionVal.SW_FAN.getAnswers());
+	insert(new Answer(QuestionVal.SW_FAN.getQuestion(), ans));
+end
+
+
+
+rule BATTLE1
+when
+	a: Answer(a.question == QuestionVal.BATTLE.getQuestion(), a.answer == "in space")
+then
+	QuestionWindow.showResults("Cosmic Encounter");
+end
+rule BATTLE2
+when
+	a: Answer(a.question == QuestionVal.BATTLE.getQuestion(), a.answer == "For the Galactic Centre")
+then
+	QuestionWindow.showResults("Rex: Final Days of an Empire");
+end
+rule BATTLE3
+when
+	a: Answer(a.question == QuestionVal.BATTLE.getQuestion(), a.answer == "For Earth!")
+then
+	QuestionWindow.showResults("Conquest of Planet Earth");
+end
+rule BATTLESTAR1
+when
+	a: Answer(a.question == QuestionVal.BATTLESTAR.getQuestion(), a.answer == "Yes")
+then
+	QuestionWindow.showResults("Battlestar Galactica: the Board Game");
+end
+rule HOW_EPIC1
+when
+	a: Answer(a.question == QuestionVal.HOW_EPIC.getQuestion(), a.answer == "We've got all day")
+then
+	QuestionWindow.showResults("Twilight Imperium: 3rd Edition");
+end
+rule HOW_EPIC2
+when
+	a: Answer(a.question == QuestionVal.HOW_EPIC.getQuestion(), a.answer == "It's a work night...")
+then
+	QuestionWindow.showResults("Eclipse");
+end
+rule LCG1
+when
+	a: Answer(a.question == QuestionVal.LCG.getQuestion(), a.answer == "Yes")
+then
+	QuestionWindow.showResults("Android: Netrunner");
+end
+rule LCG2
+when
+	a: Answer(a.question == QuestionVal.LCG.getQuestion(), a.answer == "No")
+then
+	QuestionWindow.showResults("Race for the Galaxy");
+end
+rule MERCHANT1
+when
+	a: Answer(a.question == QuestionVal.MERCHANT.getQuestion(), a.answer == "It's serious business")
+then
+	QuestionWindow.showResults("Merchant of Venus");
+end
+rule MERCHANT2
+when
+	a: Answer(a.question == QuestionVal.MERCHANT.getQuestion(), a.answer == "Nah, we just want a giggle")
+then
+	QuestionWindow.showResults("Galaxy Trucker");
+end
+rule NOT_ALIEN1
+when
+	a: Answer(a.question == QuestionVal.NOT_ALIEN.getQuestion(), a.answer == "Athlete")
+then
+	QuestionWindow.showResults("Dreadball: The Futuristic Sport Game");
+end
+rule NOT_ALIEN2
+when
+	a: Answer(a.question == QuestionVal.NOT_ALIEN.getQuestion(), a.answer == "Galastic Corporation")
+then
+	QuestionWindow.showResults("Phantom League");
+end
+rule SPACE_CREW1
+when
+	a: Answer(a.question == QuestionVal.SPACE_CREW.getQuestion(), a.answer == "Teamwork and high-speed planning")
+then
+	QuestionWindow.showResults("Space Alert");
+end
+
+rule SPACE_DECKBUILDER1
+when
+	a: Answer(a.question == QuestionVal.SPACE_DECKBUILDER.getQuestion(), a.answer == "Yes")
+then
+	QuestionWindow.showResults("Core Worlds");
+end
+rule ST_FAN1
+when
+	a: Answer(a.question == QuestionVal.ST_FAN.getQuestion(), a.answer == "Competitive")
+then
+	QuestionWindow.showResults("Star Trek: Fleet Capitans");
+end
+rule ST_FAN2
+when
+	a: Answer(a.question == QuestionVal.ST_FAN.getQuestion(), a.answer == "Cooperative")
+then
+	QuestionWindow.showResults("Star Trek Expeditions");
+end
+rule SW_FAN1
+when
+	a: Answer(a.question == QuestionVal.SW_FAN.getQuestion(), a.answer == "Adventure")
+then
+	QuestionWindow.showResults("Star Wars Living Card Game");
+end
+rule SW_FAN2
+when
+	a: Answer(a.question == QuestionVal.SW_FAN.getQuestion(), a.answer == "Pew! Pew!")
+then
+	QuestionWindow.showResults("Star Wars: X-Wing Minature Game");
+end
+rule COSMIC_ENCOUNTER
+when
+	a: Answer(a.question == QuestionVal.BATTLE.getQuestion(), a.answer == "In space")
+then
+	QuestionWindow.showResults("Cosmic Encounter");
+end
+rule SPACE_CREW2
+when
+	a: Answer(a.question == QuestionVal.SPACE_CREW.getQuestion(), a.answer == "Teamwork and dexterity")
+then
+	QuestionWindow.showResults("Space Cadets");
+end
+
+rule ALIEN_RACE
+when
+	a: Answer(a.question == QuestionVal.EEEE.getQuestion(), a.answer == "That's Not right!")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.ALIEN_RACE.getQuestion(), QuestionVal.ALIEN_RACE.getAnswers());
+	insert(new Answer(QuestionVal.ALIEN_RACE.getQuestion(), ans));
+end
+
+
+rule CARD_GAME
+when
+	a: Answer(a.question == QuestionVal.ALIEN_RACE.getQuestion(), a.answer == "Maybe Not")
+then
+	String ans = QuestionWindow.updateFrame(QuestionVal.CARD_GAME.getQuestion(), QuestionVal.CARD_GAME.getAnswers());
+	insert(new Answer(QuestionVal.CARD_GAME.getQuestion(), ans));
+end

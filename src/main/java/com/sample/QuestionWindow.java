@@ -18,5 +18,6 @@ public class QuestionWindow {
 	
 	public static void showResults(String info) {
 		JOptionPane.showMessageDialog(frame, "You should play: " + info);
+		DroolsTest.resetSession();
 	}
 }

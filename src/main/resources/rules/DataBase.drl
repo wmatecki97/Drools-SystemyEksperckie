@@ -38,7 +38,7 @@ declare enum QuestionVal
 	CARD_GAME("How about a card game?", ["Sure, that works", "I like my boards"]),
 	SPACE_DECKBUILDER("A Deck Builder?", ["Yes", "No"]),
 	LCG("A Living Card Game?", ["Yes", "No"]),
-	NoT_ALIEN("If Not alien, I'll be a ...", ["Athlete", "Galastic Corporation", "Space Crew on Mission", "Merchant"]),
+	NOT_ALIEN("If Not alien, I'll be a ...", ["Athlete", "Galastic Corporation", "Space Crew on Mission", "Merchant"]),
 	SPACE_CREW("How will you succeed?", ["Teamwork and high-speed planning", "Teamwork and dexterity"]),
 	MERCHANT("Seriously?", ["It's serious business", "Nah, we just want a giggle"]),
 	CITY_BUILDING("Do you enjoy tile placement?", ["Yes", "No"]),

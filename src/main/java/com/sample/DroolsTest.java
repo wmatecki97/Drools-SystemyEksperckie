@@ -10,7 +10,13 @@ import org.kie.api.runtime.KieSession;
 public class DroolsTest {
 
 	
-    
+	public static void resetSession() {
+		KieServices ks = KieServices.Factory.get();
+	    KieContainer kContainer = ks.getKieClasspathContainer();
+		KieSession kSession = kContainer.newKieSession("ksession-rules");
+	
+	    kSession.fireAllRules();
+	}
     public static final void main(String[] args) {
         try {
 //        	QuestionWindow.updateFrame("pytanie", "odpowiedz1", "odpowiedz2", "odpowiedz3");
@@ -18,11 +24,7 @@ public class DroolsTest {
 
         	/////////////////////////////////////////////
             // load up the knowledge base
-	        KieServices ks = KieServices.Factory.get();
-    	    KieContainer kContainer = ks.getKieClasspathContainer();
-        	KieSession kSession = kContainer.newKieSession("ksession-rules");
-
-            kSession.fireAllRules();
+        	resetSession();
         } catch (Throwable t) {
             t.printStackTrace();
         }
